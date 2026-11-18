@@ -5,18 +5,19 @@
 #include <PubSubClient.h>
 
 // 1. Pengaturan Wi-Fi
-const char* ssid = "NAMA_WIFI_ANDA";
-const char* password = "PASSWORD_WIFI_ANDA";
+const char* ssid = "USERNAME";
+const char* password = "PASSS";
 
 // 2. Pengaturan Broker & Topik MQTT
-const char* mqtt_server = "broker.emqx.io";
+const char* mqtt_server = "broker.emqx.io"; / sesuaikan
 const int mqtt_port = 1883;
-const char* mqtt_topic = "testtopic/tugasiot";
+const char* mqtt_topic = "praktikum/iotk100";
 
-// 3. Pengaturan Pin Sensor
+// 3. Pengaturan Pin Sensor & LED
 #define DHTPIN 4
 #define DHTTYPE DHT22
 const int mq2Pin = 34;
+const int ledPin = 2; // Pin LED indikator (GPIO 2)
 
 DHT dht(DHTPIN, DHTTYPE);
 WebServer server(80);
@@ -25,6 +26,7 @@ PubSubClient mqtt(espClient);
 
 float suhu = 0, kelembapan = 0;
 int nilaiMQ2 = 0;
+bool statusLed = false;
 
 unsigned long previousMillis = 0;
 const long interval = 2000;
@@ -46,6 +48,9 @@ void reconnectMQTT() {
 void setup() {
   Serial.begin(115200);
   pinMode(mq2Pin, INPUT);
+  pinMode(ledPin, OUTPUT);
+  digitalWrite(ledPin, LOW); // Kondisi awal LED mati
+
   dht.begin();
 
   WiFi.begin(ssid, password);
@@ -113,14 +118,26 @@ void loop() {
     if (dhtOk) {
       suhu = t;
       kelembapan = h;
+
+      // Logika kontrol LED: menyala jika suhu >= 35 C
+      if (suhu >= 31.0) {
+        digitalWrite(ledPin, HIGH);
+        statusLed = true;
+      } else {
+        digitalWrite(ledPin, LOW);
+        statusLed = false;
+      }
     } else {
+      digitalWrite(ledPin, LOW);
+      statusLed = false;
       Serial.println("[ERR] Gagal membaca sensor DHT22!");
     }
 
     String payload = "{";
     payload += "\"suhu\":" + (dhtOk ? String(suhu, 1) : "null") + ",";
     payload += "\"kelembapan\":" + (dhtOk ? String(kelembapan, 1) : "null") + ",";
-    payload += "\"mq2\":" + String(nilaiMQ2);
+    payload += "\"mq2\":" + String(nilaiMQ2) + ",";
+    payload += "\"led\":" + String(statusLed ? 1 : 0);
     payload += "}";
 
     if (mqtt.connected()) {
