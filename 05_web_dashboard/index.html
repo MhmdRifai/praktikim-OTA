@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Monitoring IoT ESP32 (DHT22 & MQ-2)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div>
+        <h1>Monitoring Sensor ESP32</h1>
+        <p class="topic-info">Topik MQTT: <code>testtopic/tugasiot</code></p>
+      </div>
+      <span id="statusBadge" class="badge connecting">Menghubungkan...</span>
+    </header>
+
+    <main class="grid">
+      <div class="card">
+        <span class="label">Suhu Ruangan (DHT22)</span>
+        <div class="value"><span id="suhu">--</span> <small>°C</small></div>
+      </div>
+
+      <div class="card">
+        <span class="label">Kelembapan (DHT22)</span>
+        <div class="value"><span id="kelembapan">--</span> <small>%</small></div>
+      </div>
+
+      <div class="card">
+        <span class="label">Sensor Gas / Asap (MQ-2)</span>
+        <div class="value"><span id="mq2">--</span> <small>/ 4095</small></div>
+        <span id="mq2Status" class="gas-status">Menunggu data...</span>
+      </div>
+    </main>
+
+    <footer>
+      <span>Update terakhir: <strong id="lastUpdate">-</strong></span>
+      <span>Data mentah: <code id="rawJson">-</code></span>
+    </footer>
+  </div>
+
+  <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
