@@ -120,3 +120,9 @@ Data yang dipublikasikan ESP32 ke topik `testtopic/tugasiot` memiliki struktur s
 * **`suhu`**: Nilai suhu dalam satuan derajat Celsius (`°C`) dari sensor DHT22 (`null` jika sensor gagal terbaca).
 * **`kelembapan`**: Nilai kelembapan relatif (`%`) dari sensor DHT22 (`null` jika sensor gagal terbaca).
 * **`mq2`**: Nilai mentah ADC 12-bit (`0` – `4095`) dari sensor gas MQ-2. Nilai di atas `1500` akan memicu status peringatan pada dashboard web.
+
+* **Output Video
+ 1. Video Output Hasil OTA
+ 2. Video Upload file .bin OTA
+ 3. Video Upload file .bin dan sensor
+ 4. Video Hasil Dasboard nya
