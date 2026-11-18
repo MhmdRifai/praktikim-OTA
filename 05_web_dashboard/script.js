@@ -1,5 +1,5 @@
 const brokerUrl = 'wss://broker.emqx.io:8084/mqtt';
-const topic = 'testtopic/tugasiot';
+const topic = 'praktikum/iotk100';
 
 const statusBadge = document.getElementById('statusBadge');
 const suhuEl = document.getElementById('suhu');
