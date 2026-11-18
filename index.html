@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Plant Monitoring Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <header>
+            <div>
+                <h1>Plant Monitoring</h1>
+                <p>Monitoring kualitas udara dan lingkungan tanaman</p>
+            </div>
+
+            <div id="statusBadge" class="badge connecting">
+                Menghubungkan...
+            </div>
+        </header>
+
+
+        <!-- SENSOR DATA -->
+        <section class="section">
+
+            <h2>Data Sensor</h2>
+
+            <p class="section-description">
+                Data lingkungan yang diterima secara real-time.
+            </p>
+
+            <div class="sensor-grid">
+
+                <!-- SUHU -->
+                <div class="sensor-card">
+                    <div class="sensor-icon red">°C</div>
+
+                    <div class="sensor-name">Temperature</div>
+
+                    <div class="sensor-value">
+                        <span id="suhu">--</span>
+                    </div>
+
+                    <div class="sensor-unit">°C</div>
+
+                    <div class="sensor-description">
+                        Suhu lingkungan tanaman
+                    </div>
+                </div>
+
+                <!-- KELEMBAPAN -->
+                <div class="sensor-card">
+                    <div class="sensor-icon blue">%</div>
+
+                    <div class="sensor-name">Humidity</div>
+
+                    <div class="sensor-value">
+                        <span id="kelembapan">--</span>
+                    </div>
+
+                    <div class="sensor-unit">% RH</div>
+
+                    <div class="sensor-description">
+                        Kelembapan udara lingkungan
+                    </div>
+                </div>
+
+                <!-- MQ2 -->
+                <div class="sensor-card">
+                    <div class="sensor-icon orange">MQ</div>
+
+                    <div class="sensor-name">Gas Sensor MQ-2</div>
+
+                    <div class="sensor-value">
+                        <span id="mq2">--</span>
+                    </div>
+
+                    <div class="sensor-unit">ADC Value</div>
+
+                    <div id="mq2Status" class="gas-status">
+                        Menunggu data sensor...
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- UPDATE INFORMATION -->
+        <section class="update-section">
+
+            <div>
+                <span class="info-label">Pembaruan Terakhir</span>
+                <strong id="lastUpdate">Belum ada data</strong>
+            </div>
+
+            <div>
+                <span class="info-label">Total Data Diterima</span>
+                <strong id="totalData">0</strong>
+            </div>
+
+            <div>
+                <span class="info-label">Status Sensor</span>
+                <strong id="sensorStatus">Menunggu data...</strong>
+            </div>
+
+        </section>
+
+        <!-- HISTORY TABLE -->
+        <section class="section history-section">
+
+            <h2>Riwayat Data Sensor</h2>
+
+            <p class="section-description">
+                Data sensor yang diterima dari MQTT Broker.
+            </p>
+
+            <div class="table-wrapper">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Waktu</th>
+                            <th>Suhu (°C)</th>
+                            <th>Kelembapan (%)</th>
+                            <th>MQ-2 (ADC)</th>
+                            <th>Status Gas</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="historyTable">
+                        <tr>
+                            <td colspan="6" class="empty">
+                                Belum ada data sensor
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </section>
+
+        <footer>
+            Plant Monitoring System &copy; 2026
+        </footer>
+
+    </div>
+
+    <!-- MQTT LIBRARY -->
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+
+    <!-- MAIN SCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+</html>

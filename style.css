@@ -1,0 +1,321 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7f5;
+    color: #252b27;
+}
+
+.container {
+    width: 90%;
+    max-width: 1150px;
+    margin: 40px auto;
+}
+
+/* HEADER */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 27px;
+    margin-bottom: 8px;
+    color: #1d3829;
+}
+
+header p {
+    color: #777;
+    font-size: 14px;
+}
+
+/* CONNECTION BADGE */
+
+.badge {
+    padding: 11px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.connected {
+    background: #e1f5e9;
+    color: #16834a;
+}
+
+.connecting {
+    background: #fff3d8;
+    color: #bd8422;
+}
+
+.error {
+    background: #ffe5e5;
+    color: #d43838;
+}
+
+/* BROKER INFORMATION */
+
+.broker-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    background: white;
+    border: 1px solid #e8ece8;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 35px;
+}
+
+.broker-info div,
+.update-section div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.info-label {
+    color: #888;
+    font-size: 12px;
+}
+
+.broker-info strong,
+.update-section strong {
+    font-size: 14px;
+    color: #304d3a;
+}
+
+/* SECTION */
+
+.section {
+    margin-bottom: 35px;
+}
+
+.section h2 {
+    font-size: 19px;
+    color: #263c2d;
+    margin-bottom: 7px;
+}
+
+.section-description {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+/* SENSOR CARD */
+
+.sensor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.sensor-card {
+    background: white;
+    border: 1px solid #e8ece8;
+    border-radius: 10px;
+    padding: 24px;
+    min-height: 225px;
+}
+
+.sensor-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.orange {
+    background: #fff1df;
+    color: #e58a25;
+}
+
+.red {
+    background: #ffe9e7;
+    color: #df5c51;
+}
+
+.blue {
+    background: #e5f1ff;
+    color: #4188ce;
+}
+
+.sensor-name {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 12px;
+}
+
+.sensor-value {
+    font-size: 34px;
+    font-weight: bold;
+    color: #263c2d;
+}
+
+.sensor-unit {
+    font-size: 12px;
+    color: #999;
+    margin-top: 3px;
+}
+
+.sensor-description {
+    border-top: 1px solid #eee;
+    margin-top: 17px;
+    padding-top: 13px;
+    color: #888;
+    font-size: 12px;
+}
+
+/* MQ2 STATUS */
+
+.gas-status {
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 15px;
+    padding: 9px;
+    border-radius: 6px;
+}
+
+.aman {
+    background: #e1f5e9;
+    color: #16834a;
+}
+
+.bahaya {
+    background: #ffe5e5;
+    color: #d43838;
+}
+
+/* UPDATE INFORMATION */
+
+.update-section {
+    display: flex;
+    gap: 60px;
+    background: #eaf2eb;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 35px;
+}
+
+/* HISTORY TABLE */
+
+.history-section {
+    background: white;
+    padding: 22px;
+    border-radius: 10px;
+    border: 1px solid #e8ece8;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+}
+
+thead {
+    background: #f3f6f3;
+}
+
+th {
+    font-size: 12px;
+    color: #637268;
+    font-weight: bold;
+    text-align: left;
+    padding: 14px;
+    white-space: nowrap;
+}
+
+td {
+    font-size: 13px;
+    padding: 14px;
+    border-bottom: 1px solid #eee;
+    color: #555;
+    white-space: nowrap;
+}
+
+tbody tr:hover {
+    background: #fafcfa;
+}
+
+.empty {
+    text-align: center;
+    color: #aaa;
+    padding: 30px;
+}
+
+/* TABLE STATUS */
+
+.table-status {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.table-status.aman {
+    background: #e1f5e9;
+    color: #16834a;
+}
+
+.table-status.bahaya {
+    background: #ffe5e5;
+    color: #d43838;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    color: #aaa;
+    font-size: 12px;
+    padding: 25px 0;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .container {
+        width: 94%;
+        margin: 25px auto;
+    }
+
+    header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .broker-info {
+        grid-template-columns: 1fr;
+    }
+
+    .sensor-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .update-section {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+}
